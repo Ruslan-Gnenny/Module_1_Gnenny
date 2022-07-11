@@ -1,91 +1,45 @@
 package Level_2;
+import java.util.*;
+import java.lang.*;
+
+import static Level_2.Task2.MaxDepth.maxDepth;
 
 public class Task2 {
- public static void main(String[] args) {
+    public static void main(String args[])
+    {
+        TreeNode root= new TreeNode(3);
+        root.left= new TreeNode(9);
+        root.right= new TreeNode(20);
+        root.right.left= new TreeNode(15);
+        root.right.right= new TreeNode(7);
 
-  Tree root =
+        System.out.println(maxDepth(root));
 
-          new Tree(20,
+    }
 
-                  new Tree(7,
+    static class TreeNode
+    {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right)
+        {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+    class MaxDepth
+    {
+        public static int maxDepth(TreeNode root)
+        {
+            if(root==null) return 0;
 
-                          new Tree(4, null, new Tree(6)), new Tree(9)),
-
-                  new Tree(35,
-
-                          new Tree(31, new Tree(28), null),
-
-                          new Tree(40, new Tree(38), new Tree(52))));
-
-
-
-
-  System.out.println("Сумма дерева: " + root.sum());
-
- }
-
-
-
-
- static class Tree {
-
-  int value;
-
-  Tree left;
-
-  Tree right;
-
-
-
-
-  public Tree(int value, Tree left, Tree right) {
-
-   this.value = value;
-
-   this.left = left;
-
-   this.right = right;
-
-  }
+            return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
+        }
 
 
-
-
-  public Tree(int value) {
-
-   this.value = value;
-
-  }
-
-
-
-
-  public int sum() {
-
-   int summ = value;
-
-
-
-
-   if (left != null) {
-
-    summ += left.sum();
-
-   }
-
-
-
-
-   if (right != null) {
-
-    summ += right.sum();
-
-   }
-
-   return summ;
-
-  }
-
- }
-
+    }
 }
