@@ -2,7 +2,6 @@ package Level_2;
 import java.util.*;
 import java.lang.*;
 
-import static Level_2.Task2.MaxDepth.maxDepth;
 
 public class Task2 {
     public static void main(String args[])
@@ -17,7 +16,7 @@ public class Task2 {
 
     }
 
-    static class TreeNode
+    public static class TreeNode
     {
         int val;
         TreeNode left;
@@ -31,8 +30,6 @@ public class Task2 {
             this.right = right;
         }
     }
-    class MaxDepth
-    {
         public static int maxDepth(TreeNode root)
         {
             if(root==null) return 0;
@@ -40,6 +37,4 @@ public class Task2 {
             return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
         }
 
-
-    }
 }
